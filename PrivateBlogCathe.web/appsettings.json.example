@@ -7,7 +7,7 @@
   },
 
   "ConnectionStrings": {
-    "MyConnection": "Server=MCOA-LIDGESH; Database=PrivateBlog; User Id=Catheuser; Password=Noahperez2020; encrypt=false;"
+    "MyConnection": "Server=; Database=PrivateBlog; User Id=; Password=; encrypt=false;"
   },
   "AllowedHosts": "*"
 }
