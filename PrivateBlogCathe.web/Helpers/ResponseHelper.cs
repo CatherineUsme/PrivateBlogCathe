@@ -28,5 +28,20 @@ namespace PrivateBlogCathe.web.Helpers
 
             };
         }
+
+        public static Response<T> MakeResponseFail(string message)
+        {
+            return new Response<T>
+            {
+                Errors = new List<string>
+                {
+                    message
+                },
+
+                IsSuccess = false,
+                Message = message,
+
+            };
+        }
     }
 }
