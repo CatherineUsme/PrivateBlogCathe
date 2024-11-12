@@ -83,7 +83,7 @@ namespace PrivateBlogCathe.web.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    _notifyService.Error("Debe ah¿justar los errores de validacion");
+                    _notifyService.Error("Debe ajustar los errores de validacion");
                     return View(section);
                 }
 
