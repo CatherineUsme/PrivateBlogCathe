@@ -75,13 +75,44 @@ namespace PrivateBlogCathe.web.Controllers
 
                 BlogDTO dto = await _converterHelper.ToBlogDTO(response.Result);
 
-                dto.Sections = await _combosHelper.GetComboSections();
-                
+                        
                 return View(dto);
             }
 
             _notifyService.Error(response.Message);
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(BlogDTO dto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    _notifyService.Error("Debe ajustar los errores de validacion");
+                    return View(dto);
+                }
+
+                Response<Blog> response = await _blogsService.EditAsync(dto);
+
+                if (response.IsSuccess)
+                {
+                    _notifyService.Success(response.Message);
+                    return RedirectToAction(nameof(Index));
+                }
+
+                _notifyService.Error(response.Message);
+                dto.Sections = await _combosHelper.GetComboSections();
+                return View(dto);
+            }
+            catch (Exception ex)
+            {
+                _notifyService.Error(ex.Message);
+                dto.Sections = await _combosHelper.GetComboSections();
+                return View(dto);
+            }
+
         }
     }
 }

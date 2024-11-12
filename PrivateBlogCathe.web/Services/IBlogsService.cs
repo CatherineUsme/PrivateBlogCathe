@@ -60,7 +60,9 @@ namespace PrivateBlogCathe.web.Services
                     return ResponseHelper<Blog>.MakeResponseFail($"No existe Blog con id '{dto.Id}");
                 }
 
-                blog = _converterHelper.ToBlog(dto);
+                blog.Title = dto.Title;
+                blog.Content = dto.Content;
+                blog.SectionId = dto.SectionId;
 
                 _context.Blogs.Update(blog);
                 await _context.SaveChangesAsync();

@@ -30,15 +30,15 @@ namespace PrivateBlogCathe.web.Helpers
             };
         }
 
-        public async Task<BlogDTO> ToBlogDTO(Blog result)
+        public async Task<BlogDTO> ToBlogDTO(Blog blog)
         {
             return new BlogDTO
             {
-                Id = result.Id,
-                Title = result.Title,
-                Content = result.Content,
-                IsPublished = result.IsPublished,
-                SectionId = result.SectionId,
+                Id = blog.Id,
+                Title = blog.Title,
+                Content = blog.Content,
+                IsPublished = blog.IsPublished,
+                SectionId = blog.SectionId,
                 Sections= await _combosHelper.GetComboSections()
 
             };
